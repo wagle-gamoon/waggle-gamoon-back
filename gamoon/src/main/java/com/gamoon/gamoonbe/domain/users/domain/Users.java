@@ -37,6 +37,9 @@ public class Users extends BaseTimeEntity {
     @Column(name = "user_keywords", nullable = true)
     private List<Keyword> userKeywords;
 
+    @Column(name = "user_graduate", nullable = true)
+    private Boolean userGraduate;
+
     @Column(name = "user_department", nullable = true)
     private String userDepartment;
 
