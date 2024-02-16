@@ -41,7 +41,7 @@ public class Users extends BaseTimeEntity {
     private String userDepartment;
 
     @Column(name = "user_match_active", nullable = false)
-    private Boolean userMatchActive = true;
+    private Boolean userMatchActive;
 
     @Column()
     private LocalDateTime deletedAt;

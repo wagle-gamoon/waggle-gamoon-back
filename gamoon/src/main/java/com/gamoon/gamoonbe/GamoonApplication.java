@@ -15,4 +15,5 @@ public class GamoonApplication {
 		SpringApplication.run(GamoonApplication.class, args);
 	}
 
+
 }
