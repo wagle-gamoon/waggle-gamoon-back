@@ -1,4 +1,4 @@
-package com.example.gamoon;
+package com.gamoon.gamoonbe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
