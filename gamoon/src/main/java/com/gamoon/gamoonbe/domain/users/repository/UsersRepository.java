@@ -1,4 +1,4 @@
-package com.gamoon.gamoonbe.domain.users.application;
+package com.gamoon.gamoonbe.domain.users.repository;
 
 import com.gamoon.gamoonbe.domain.users.domain.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
