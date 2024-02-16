@@ -4,6 +4,7 @@ import com.gamoon.gamoonbe.domain.users.domain.Users;
 import com.gamoon.gamoonbe.global.shared.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,5 +26,15 @@ public class Post extends BaseTimeEntity {
     private String content;
     private int totalCount;
     private int currentCount;
+
+    @Builder
+    public Post(Users user, String title, String place, String content, int totalCount, int currentCount) {
+        this.user = user;
+        this.title = title;
+        this.place = place;
+        this.content = content;
+        this.totalCount = totalCount;
+        this.currentCount = currentCount;
+    }
 
 }
