@@ -9,11 +9,8 @@ import org.hibernate.annotations.ColumnDefault;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Setter
 @Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Users extends BaseTimeEntity {
     @Id
@@ -43,12 +40,22 @@ public class Users extends BaseTimeEntity {
     @Column(name = "user_department", nullable = true)
     private String userDepartment;
 
-    @Column(name = "user_match_active")
-    @ColumnDefault("true")
-    private Boolean userMatchActive;
+    @Column(name = "user_match_active", nullable = false)
+    private Boolean userMatchActive = true;
 
     @Column()
     private LocalDateTime deletedAt;
+
+    @Builder
+    public Users(String userNickname, Gender userGender, Integer year, List<Keyword> userKeywords, Boolean userGraduate, Boolean userMatchActive, String userDepartment) {
+        this.userNickname = userNickname;
+        this.userGender = userGender;
+        this.year = year;
+        this.userKeywords = userKeywords;
+        this.userGraduate = userGraduate;
+        this.userMatchActive = userMatchActive;
+        this.userDepartment = userDepartment;
+    }
 
     @PreDestroy()
     public void preDestroy() {
