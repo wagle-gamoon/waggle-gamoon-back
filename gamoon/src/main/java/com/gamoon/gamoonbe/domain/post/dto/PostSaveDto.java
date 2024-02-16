@@ -1,5 +1,6 @@
 package com.gamoon.gamoonbe.domain.post.dto;
 
+import com.gamoon.gamoonbe.domain.category.domain.Category;
 import com.gamoon.gamoonbe.domain.post.domain.Post;
 import com.gamoon.gamoonbe.domain.users.domain.Users;
 import lombok.AccessLevel;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PostSaveDto {
 
+    private String categorySort;
     private String title;
     private String place;
     private String content;
@@ -18,7 +20,8 @@ public class PostSaveDto {
     private int currentCount;
 
     @Builder
-    public PostSaveDto(String title, String place, String content, int totalCount, int currentCount) {
+    public PostSaveDto(String categorySort, String title, String place, String content, int totalCount, int currentCount) {
+        this.categorySort = categorySort;
         this.title = title;
         this.place = place;
         this.content = content;
@@ -26,9 +29,10 @@ public class PostSaveDto {
         this.currentCount = currentCount;
     }
 
-    public Post toEntity(Users users) {
+    public Post toEntity(Users users, Category category) {
         return Post.builder()
                 .user(users)
+                .category(category)
                 .title(title)
                 .place(place)
                 .content(content)

@@ -1,5 +1,7 @@
 package com.gamoon.gamoonbe.domain.post.application;
 
+import com.gamoon.gamoonbe.domain.category.domain.Category;
+import com.gamoon.gamoonbe.domain.category.repository.CategoryRepository;
 import com.gamoon.gamoonbe.domain.post.dto.PostSaveDto;
 import com.gamoon.gamoonbe.domain.post.repository.PostRepository;
 import com.gamoon.gamoonbe.domain.users.domain.Users;
@@ -17,6 +19,7 @@ public class PostService {
 
     private final UserRepository userRepository;
     private final PostRepository postRepository;
+    private final CategoryRepository categoryRepository;
 
     @Transactional
     public Long savePost(Long userId, PostSaveDto postSaveDto) {
@@ -26,7 +29,9 @@ public class PostService {
             throw new IllegalArgumentException("인원 수가 옳지 않습니다.");
         }
 
-        return postRepository.save(postSaveDto.toEntity(findUsers)).getPostId();
+        Category findCategory = categoryRepository.findByCategorySort(postSaveDto.getCategorySort());
+
+        return postRepository.save(postSaveDto.toEntity(findUsers, findCategory)).getPostId();
     }
 
     public void getPosts() {
