@@ -4,6 +4,7 @@ import com.gamoon.gamoonbe.domain.post.domain.Post;
 import com.gamoon.gamoonbe.global.shared.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -22,4 +23,10 @@ public class Comment extends BaseTimeEntity {
     private Post post;
 
     private String content;
+
+    @Builder
+    public Comment(Post post, String content) {
+        this.post = post;
+        this.content = content;
+    }
 }
