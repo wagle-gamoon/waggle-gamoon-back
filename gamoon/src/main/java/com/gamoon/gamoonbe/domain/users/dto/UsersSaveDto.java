@@ -15,26 +15,23 @@ import java.util.List;
 public class UsersSaveDto {
 
     private String userNickname;
-
     private Gender userGender;
-
     private Integer year;
-
     private List<Keyword> userKeywords;
-
     private Boolean userGraduate;
-
     private String userDepartment;
+    private String preferInterests;
 
 
     @Builder
-    public UsersSaveDto(String userNickname, Gender userGender, Integer year, List<Keyword> userKeywords, Boolean userGraduate, String userDepartment) {
+    public UsersSaveDto(String userNickname, Gender userGender, Integer year, List<Keyword> userKeywords, Boolean userGraduate, String userDepartment, String preferInterests) {
         this.userNickname = userNickname;
         this.userGender = userGender;
         this.year = year;
         this.userKeywords = userKeywords;
         this.userGraduate = userGraduate;
         this.userDepartment = userDepartment;
+        this.preferInterests = preferInterests;
     }
 
     public Users toEntity() {

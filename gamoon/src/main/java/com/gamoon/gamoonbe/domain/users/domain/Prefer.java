@@ -22,4 +22,11 @@ public class Prefer extends BaseTimeEntity {
 
     @Column(name = "prefer_interests", nullable = false)
     private String preferInterests;
+
+    @Builder
+    public Prefer(Users user, String preferInterests) {
+        this.user = user;
+        this.preferInterests = preferInterests;
+    }
+
 }
