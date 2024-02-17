@@ -19,9 +19,10 @@ public class CommentController {
 
     @Operation(summary = "댓글 등록", description = "")
     @Parameter(name = "postId", description = "게시글 id")
-    @Parameter(name = "commentSaveDto", description = "")
+    @Parameter(name = "commentSaveDto", description = "여기에 userId가 담겨서 와야합니다 ㅠ..")
     @PostMapping("/{postId}")
     public ApiResponse<Long> saveComment(@PathVariable Long postId, @RequestBody CommentSaveDto commentSaveDto) {
+
         Long savedCommentId = commentService.saveComment(postId, commentSaveDto);
         return ApiResponse.createSuccess(savedCommentId);
     }
