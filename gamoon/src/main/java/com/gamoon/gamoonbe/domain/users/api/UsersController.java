@@ -23,7 +23,7 @@ public class UsersController {
     private final UsersService usersService;
 
     @Operation(summary = "유저 등록", description = "")
-    @Parameter(name = "usersSaveDto", description = "")
+    @Parameter(name = "usersSaveDto", description = "userKeywords에는 list로 대면과 비대면중 1개, 조언자와 경청자 중 1개, 일회성과 꾸준히 중 1개가 바인딩돼야합니다.")
     @PostMapping
     public ApiResponse<Long> saveUser(@RequestBody UsersSaveDto usersSaveDto) {
         Long savedUserId = usersService.saveUser(usersSaveDto);

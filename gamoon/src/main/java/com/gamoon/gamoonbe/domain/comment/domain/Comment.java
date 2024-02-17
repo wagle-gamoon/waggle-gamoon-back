@@ -1,6 +1,7 @@
 package com.gamoon.gamoonbe.domain.comment.domain;
 
 import com.gamoon.gamoonbe.domain.post.domain.Post;
+import com.gamoon.gamoonbe.domain.users.domain.Users;
 import com.gamoon.gamoonbe.global.shared.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -22,11 +23,15 @@ public class Comment extends BaseTimeEntity {
     @JoinColumn(name = "post_id")
     private Post post;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Users user;
+
     private String content;
 
     @Builder
-    public Comment(Post post, String content) {
+    public Comment(Post post, Users user, String content) {
         this.post = post;
+        this.user = user;
         this.content = content;
     }
 }
